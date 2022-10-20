@@ -1,13 +1,10 @@
 import javax.swing.*;
 import java.io.*;
-import java.nio.file.Files;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FilSök {
 
-    public boolean hittaKund (String söktKund){
+    public void hittaKund (String söktKund){
         String rad;
         try (BufferedReader br = new BufferedReader(new FileReader("src/kunder"))) {
             while((rad = br.readLine()) != null){
@@ -21,35 +18,27 @@ public class FilSök {
                         LocalDate nuvarandeDatum = LocalDate.now();
                         try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/besöksregister", true))){
                             bw.write(personNummer+  " " + namn + " " + "\n" + nuvarandeDatum+ "\n");
-                            bw.newLine();
+                            if (!rad.isBlank()){
+                                bw.newLine();
+                            }
                         }
                         System.out.println(datum);
                         if (datum.isAfter(nuvarandeDatum.minusYears(1))){
-                            JOptionPane.showMessageDialog(null, "Nuvarande medlem");
-                            return true;
+                            JOptionPane.showMessageDialog(null, "Nuvarande medlem.");
                         }
                         else {
-                            JOptionPane.showMessageDialog(null, "Tidigare medlem");
-                            return false;
+                            JOptionPane.showMessageDialog(null, "Tidigare medlem.");
                         }
                     }
                 }
             }
         } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Filen finns inte. Error: " + e);
             e.printStackTrace();
         } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Filen finns inte. Error: " + e);
             e.printStackTrace();
         }
-        JOptionPane.showMessageDialog(null, "Ej medlem");
-        return false;
-    }
-
-    public boolean pung(String söktKund) {
-
-        if (söktKund == "Anon Anonsson" || söktKund == "9811010000") {
-            return false;
-        } else {
-            return true;
-        }
+        JOptionPane.showMessageDialog(null, "Ej medlem.");
     }
 }

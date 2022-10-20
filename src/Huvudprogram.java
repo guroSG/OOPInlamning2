@@ -12,8 +12,7 @@ public class Huvudprogram {
             if (inmatning == null) {
                 break;
             }
-            System.out.println(inmatning);
-            System.out.println(fs.hittaKund(inmatning));
+            fs.hittaKund(inmatning);
         }
     }
 }

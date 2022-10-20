@@ -16,9 +16,5 @@ public class FilsökTest extends TestCase {
     String testPersonnummerFel = "9811010000";
     String testPersonnummerRätt = "7703021234";
 
-    assert(!fs.hittaKund(testNamnFel));
-    assert(fs.hittaKund(testNamnRätt));
-    assert(!fs.hittaKund(testPersonnummerFel));
-    assert(fs.hittaKund(testPersonnummerRätt));
     }
 }
