@@ -6,7 +6,7 @@ public class Huvudprogram {
 
     FilSök fs = new FilSök();
         while(true) {
-            String inmatning = JOptionPane.showInputDialog("Skriv in kundens namn eller personnummer.");
+            String inmatning = JOptionPane.showInputDialog("Ange kundens namn eller personnummer.");
             if (inmatning == null) {
                 break;
             }
