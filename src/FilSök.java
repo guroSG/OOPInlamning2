@@ -24,7 +24,7 @@ public class FilSök {
                     }
                 }
             }
-            if (!test){
+            if (!test) {
                 JOptionPane.showMessageDialog(null, söktKund + " är ej medlem.");
             }
         } catch (FileNotFoundException e) {

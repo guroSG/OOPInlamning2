@@ -1,9 +1,10 @@
 
 import junit.framework.TestCase;
 import org.junit.Test;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.List;
 
 public class FilsökTest extends TestCase {
 
@@ -36,9 +37,26 @@ public class FilsökTest extends TestCase {
     public void testRegistreraBesök() {
         String testNamn = "Anon Anonsson";
         String testPersonnummer = "9811011234";
-        String testFilnamn = "test/testBesökregister.txt";
         LocalDate testDagensDatum = LocalDate.now();
+        String testFilnamn = "test/testBesökregister.txt";
+        Path testFilPath = Path.of("test/testBesökregister.txt");
+        try {
+            Files.deleteIfExists(testFilPath);
+        }
+        catch (IOException e) {
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+        }
         fs.registreraBesök(testNamn, testPersonnummer, testFilnamn);
-        assert(1==1);
+        try {
+            String testLäsRegister = Files.readAllLines(testFilPath).toString();
+            assert(testLäsRegister.contains(testNamn));
+            assert(testLäsRegister.contains(testPersonnummer));
+            assert(testLäsRegister.contains(testDagensDatum.toString()));
+        }
+        catch (IOException e) {
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+        }
     }
 }
