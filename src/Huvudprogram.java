@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Huvudprogram {
 
@@ -12,7 +10,7 @@ public class Huvudprogram {
             if (inmatning == null) {
                 break;
             }
-            fs.hittaKund(inmatning);
+            fs.hittaKund(inmatning, false);
         }
     }
 }
