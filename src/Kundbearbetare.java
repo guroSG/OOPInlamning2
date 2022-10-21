@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class Kundbearbetare {
+    private String filnamnBesöksregister = "besöksregister.txt";
 
     private LocalDate nuvarandeDatum = LocalDate.now();
-    public boolean kollaMedlemsstatus(String namn, LocalDate datum, boolean test){
+    public boolean kollaMedlemsstatus(String personnummer, String namn, LocalDate datum, boolean test){
         if (datum.isAfter(nuvarandeDatum.minusYears(1))){
             if (!test) {
                 JOptionPane.showMessageDialog(null, namn + " är en nuvarande medlem. Senaste årsavgift betalades " + datum);
+                registreraBesök(personnummer, namn, filnamnBesöksregister);
             }
             return true;
         }

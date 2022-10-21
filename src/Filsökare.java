@@ -3,7 +3,6 @@ import java.io.*;
 import java.time.LocalDate;
 
 public class Filsökare {
-    private String filnamnBesöksregister = "besöksregister.txt";
 
     public boolean hittaKund (String söktKund, boolean test){
         String rad;
@@ -18,8 +17,8 @@ public class Filsökare {
                         LocalDate datum = LocalDate.parse(datumSträng);
                         if (!test){
                         Kundbearbetare kb = new Kundbearbetare();
-                        kb.kollaMedlemsstatus(namn, datum, false);
-                        kb.registreraBesök(personnummer, namn, filnamnBesöksregister);}
+                        kb.kollaMedlemsstatus(personnummer, namn, datum, false);
+                        }
                         return true;
                     }
                 }
@@ -36,5 +35,4 @@ public class Filsökare {
         }
         return false;
     }
-
 }

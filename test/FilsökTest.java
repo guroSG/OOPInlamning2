@@ -29,10 +29,11 @@ public class FilsökTest extends TestCase {
         LocalDate testDatumNuvarandeMedlem = LocalDate.now();
         LocalDate testDatumFöreDettaMedlem = LocalDate.now();
         String testNamn = "Anon Anonsson";
+        String testPersonnummer = "9811011234";
         testDatumNuvarandeMedlem = testDatumNuvarandeMedlem.minusMonths(11);
         testDatumFöreDettaMedlem = testDatumFöreDettaMedlem.minusYears(2);
-        assert(kb.kollaMedlemsstatus(testNamn, testDatumNuvarandeMedlem, test));
-        assert(!kb.kollaMedlemsstatus(testNamn, testDatumFöreDettaMedlem, test));
+        assert(kb.kollaMedlemsstatus(testPersonnummer, testNamn, testDatumNuvarandeMedlem, test));
+        assert(!kb.kollaMedlemsstatus(testPersonnummer, testNamn, testDatumFöreDettaMedlem, test));
 
     }
     public void testRegistreraBesök() {
