@@ -9,7 +9,8 @@ import java.time.LocalDate;
 public class FilsökTest extends TestCase {
 
     private boolean test = true;
-    FilSök fs = new FilSök();
+    private Filsökare fs = new Filsökare();
+    private Kundbearbetare kb = new Kundbearbetare();
 
     @Test
     public void testHittaKund(){
@@ -30,8 +31,8 @@ public class FilsökTest extends TestCase {
         String testNamn = "Anon Anonsson";
         testDatumNuvarandeMedlem = testDatumNuvarandeMedlem.minusMonths(11);
         testDatumFöreDettaMedlem = testDatumFöreDettaMedlem.minusYears(2);
-        assert(fs.kollaMedlemsstatus(testNamn, testDatumNuvarandeMedlem, test));
-        assert(!fs.kollaMedlemsstatus(testNamn, testDatumFöreDettaMedlem, test));
+        assert(kb.kollaMedlemsstatus(testNamn, testDatumNuvarandeMedlem, test));
+        assert(!kb.kollaMedlemsstatus(testNamn, testDatumFöreDettaMedlem, test));
 
     }
     public void testRegistreraBesök() {
@@ -47,7 +48,7 @@ public class FilsökTest extends TestCase {
             System.out.println("Error: " + e);
             e.printStackTrace();
         }
-        fs.registreraBesök(testNamn, testPersonnummer, testFilnamn);
+        kb.registreraBesök(testNamn, testPersonnummer, testFilnamn);
         try {
             String testLäsRegister = Files.readAllLines(testFilPath).toString();
             assert(testLäsRegister.contains(testNamn));
